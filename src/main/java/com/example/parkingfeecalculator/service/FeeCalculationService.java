@@ -57,24 +57,8 @@ public class FeeCalculationService implements IFeeCalculationService {
 
     @Override
     public double calculateParkingFee(LocalDateTime startTime, LocalDateTime endTime, VehicleType vehicleType, CarPark carPark) {
-        double result = 0;
-        if(checkGracePeriod(startTime, endTime, carPark.getGracePeriodInMinutes())) {
-            return result;
-        }
-
-        List<CalculateDaysResult> daysResult = calculateDays(startTime, endTime);
-        for (CalculateDaysResult calculateDaysResult : daysResult) {
-            List<RuleCalculatorBase> feeRulesCalculators = vehicleType == VehicleType.MOTORCYCLE ? carPark.getMotorcycleFeeRulesCalculators() : calculateDaysResult.isWeekend() ? carPark.getCarWeekendFeeRulesCalculators() : carPark.getCarWeekdayFeeRulesCalculators();
-            for (RuleCalculatorBase feeRulesCalculator : feeRulesCalculators) {
-                FitResult fitResult = feeRulesCalculator.isFit(calculateDaysResult.getDayStartTime(), calculateDaysResult.getDayEndTime());
-                if(!fitResult.isFit()) {
-                    continue;
-                }
-
-                result += feeRulesCalculator.calculateCost(fitResult);
-            }
-        }
-
-        return DoubleUtility.roundToTwoDecimalPlaces(result);
+        // #task 3
+        // TODO: Implement the logic to calculate the parking fee
+        return DoubleUtility.roundToTwoDecimalPlaces(0);
     }
 }

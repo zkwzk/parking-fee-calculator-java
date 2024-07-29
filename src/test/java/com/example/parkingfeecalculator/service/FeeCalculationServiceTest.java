@@ -127,53 +127,6 @@ public class FeeCalculationServiceTest {
         assertEquals(1.95, result);
     }
 
-    @Test
-    public void shouldReturnCorrectFeeForCalculateParkingFeeIfIts2Hours() {
-        LocalDateTime startTime = LocalDateTime.of(2021, 1, 1, 10, 0, 0);
-        LocalDateTime endTime = LocalDateTime.of(2021, 1, 1, 12, 0, 0);
-        CarPark carPark = CarParkConfig.plazaSingapuraCarPark;
-        double result = service.calculateParkingFee(startTime, endTime, VehicleType.CAR, carPark);
-        assertEquals(4.15, result);
-    }
-
-    @Test
-    public void shouldReturnCorrectFeeForCalculateParkingFeeIfItsOneWeekdayAndOneWeekend() {
-        LocalDateTime startTime = LocalDateTime.of(2021, 1, 1, 10, 0, 0);
-        LocalDateTime endTime = LocalDateTime.of(2021, 1, 2, 11, 0, 0);
-        CarPark carPark = CarParkConfig.plazaSingapuraCarPark;
-        double result = service.calculateParkingFee(startTime, endTime, VehicleType.CAR, carPark);
-        assertEquals(43.65, result);
-    }
-
-    @Test
-    public void shouldReturnCorrectFeeForCalculateParkingFeeIfItsOneWeekdayAndTwoWeekend() {
-        LocalDateTime startTime = LocalDateTime.of(2021, 1, 1, 10, 0, 0);
-        LocalDateTime endTime = LocalDateTime.of(2021, 1, 3, 12, 0, 0);
-        CarPark carPark = CarParkConfig.plazaSingapuraCarPark;
-        double result = service.calculateParkingFee(startTime, endTime, VehicleType.CAR, carPark);
-        assertEquals(87.55, result);
-    } 
-
-    @Test
-    public void shouldReturnCorrectFeeForCalculateParkingFeeForMotorcycle() {
-        LocalDateTime startTime = LocalDateTime.of(2021, 1, 1, 10, 0, 0);
-        LocalDateTime endTime = LocalDateTime.of(2021, 1, 1, 12, 0, 0);
-        CarPark carPark = CarParkConfig.plazaSingapuraCarPark;
-        double result = service.calculateParkingFee(startTime, endTime, VehicleType.MOTORCYCLE, carPark);
-        assertEquals(1.3, result); 
-    }
-
-    @Test
-    public void plazaSingapuraShouldBeTheLowest() {
-        LocalDateTime startTime = LocalDateTime.of(2021, 1, 1, 0, 0, 0);
-        LocalDateTime endTime = LocalDateTime.of(2021, 1, 1, 23, 59, 0);
-        double result = service.calculateParkingFee(startTime, endTime, VehicleType.CAR, CarParkConfig.plazaSingapuraCarPark);
-        assertEquals(42.6, result);
-
-        result = service.calculateParkingFee(startTime, endTime, VehicleType.CAR, CarParkConfig.orchardCentralCarPark);
-        assertEquals(53.06, result);
-
-        result = service.calculateParkingFee(startTime, endTime, VehicleType.CAR, CarParkConfig.tscCarPark);
-        assertEquals(58.46, result);
-    }
+    // task #3
+    // TODO: implement more test cases for the calculateParkingFee method 
 }
