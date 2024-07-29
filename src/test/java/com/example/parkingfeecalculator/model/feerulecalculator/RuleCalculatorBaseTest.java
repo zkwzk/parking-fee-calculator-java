@@ -21,30 +21,8 @@ public class RuleCalculatorBaseTest {
         assertEquals(result.getEndTime(), actualEndTime);
     }
 
-    @Test
-    public void ShouldReturnFalseIfActualTimeRangeOutsideRuleTimeRange() {
-        LocalTime actualStartTime = LocalTime.of(9, 0);
-        LocalTime actualEndTime = LocalTime.of(9, 30);
-        FitResult result = feeCalculator.isFit(actualStartTime, actualEndTime);
-        assertFalse(result.isFit());
-    }
-
-    @Test
-    public void shouldFitResultEndTimeBeActualEndTimeIfActualEndTimeIsBeforeRuleEndTime() {
-        LocalTime actualStartTime = LocalTime.of(9, 0);
-        LocalTime actualEndTime = LocalTime.of(11, 30);
-        FitResult result = feeCalculator.isFit(actualStartTime, actualEndTime);
-        assertEquals(feeCalculator.getStartTime(), result.getStartTime());
-        assertEquals(actualEndTime, result.getEndTime());
-    }
-
-    @Test
-    public void shouldReturnFalseIfTheActualStartTimeIsAfterRuleEndTime() {
-        LocalTime actualStartTime = LocalTime.of(13, 0);
-        LocalTime actualEndTime = LocalTime.of(13, 30);
-        FitResult result = feeCalculator.isFit(actualStartTime, actualEndTime);
-        assertFalse(result.isFit());
-    }
+    // task #2
+    // TODO: implement the test cases for the isFit method
 
     @Test
     public void shouldThrowUnsupportedOperationExceptionWhenCalculateCostIsCalled() {

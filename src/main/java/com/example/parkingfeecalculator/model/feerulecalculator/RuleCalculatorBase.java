@@ -16,16 +16,13 @@ public class RuleCalculatorBase {
     }
 
     public final FitResult isFit(LocalTime startTime, LocalTime endTime) {
-        if ((startTime.isBefore(this.startTime) && endTime.isBefore(this.startTime)) ||
-                (endTime.isAfter(this.endTime) && startTime.isAfter(this.endTime))) {
-            return new FitResult(false, startTime, endTime);
-        }
+        // task #2
+        // TODO: implement the isFit method
 
         return new FitResult(
-                true,
-                startTime.isAfter(this.startTime) ? startTime : this.startTime,
-                endTime.isBefore(this.endTime) ? endTime : this.endTime
-        );
+                false,
+                startTime,
+                endTime);
     }
 
     public double calculateCost(FitResult fitResult) {
