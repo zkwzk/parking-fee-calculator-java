@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.parkingfeecalculator.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

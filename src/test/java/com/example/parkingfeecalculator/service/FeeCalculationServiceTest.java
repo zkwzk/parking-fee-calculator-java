@@ -14,7 +14,6 @@ import com.example.parkingfeecalculator.model.CalculateDaysResult;
 import com.example.parkingfeecalculator.model.CarPark;
 import com.example.parkingfeecalculator.model.CarParkConfig;
 import com.example.parkingfeecalculator.model.VehicleType;
-import com.example.service.FeeCalculationService;
 
 public class FeeCalculationServiceTest {
     private final FeeCalculationService service = new FeeCalculationService();
