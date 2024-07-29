@@ -25,18 +25,9 @@ public class FixedFirstXMinutesRuleCalculator extends RuleCalculatorBase {
 
     @Override
     public double calculateCost(FitResult fitResult) {
-        if (!fitResult.isFit()) {
-            return 0;
-        }
+        // task #1
+        // TODO: implement the calculateCost method
 
-        double totalCost = 0;
-        int totalMinutes = (int)Duration.between(fitResult.getStartTime(), fitResult.getEndTime()).toMinutes();
-        if (totalMinutes <= xMinutes) {
-            return firstXMinutesFee;
-        }
-        
-        totalCost = firstXMinutesFee + Math.ceil((totalMinutes - xMinutes) / (double)yMinutes) * subsequentYMinutesFee;
-
-        return DoubleUtility.roundToTwoDecimalPlaces(totalCost);
+        return DoubleUtility.roundToTwoDecimalPlaces(0);
     }
 }

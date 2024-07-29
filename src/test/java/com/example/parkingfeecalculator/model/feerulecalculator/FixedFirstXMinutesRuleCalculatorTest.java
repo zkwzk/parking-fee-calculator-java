@@ -1,7 +1,6 @@
 package com.example.parkingfeecalculator.model.feerulecalculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalTime;
 
@@ -30,52 +29,6 @@ public class FixedFirstXMinutesRuleCalculatorTest {
         assertEquals(ruleXMinutesFee, result);
     }
 
-    @Test
-    public void shouldReturn0IfActualTimeRangeBeforeRuleTimeRage() {
-        LocalTime actualStartTime = LocalTime.of(9, 0);
-        LocalTime actualEndTime = LocalTime.of(9, 30);
-        FitResult fitResult = new FitResult(false, actualStartTime, actualEndTime);
-        double result = feeCalculator.calculateCost(fitResult);
-        assertEquals(0, result);
-    }
-
-    @Test
-    public void shouldReturnFirstXMinutesFeeIfAciutalTimeRangeExactlyMatchesXMinutes() {
-        LocalTime actualStartTime = LocalTime.of(10, 0);
-        LocalTime actualEndTime = LocalTime.of(12, 0);
-        FitResult fitResult = feeCalculator.isFit(actualStartTime, actualEndTime);
-        double result = feeCalculator.calculateCost(fitResult);
-        assertTrue(fitResult.isFit());
-        assertEquals(ruleXMinutesFee, result);
-    }
-
-    @Test
-    public void shouldReturnFirstXMinutesFeeAndSubsequenceYMinutesFeeIfActualTimeRangeExceedsXMinutesByOneMinute() {
-        LocalTime actualStartTime = LocalTime.of(10, 0);
-        LocalTime actualEndTime = LocalTime.of(12, 1);
-        FitResult fitResult = feeCalculator.isFit(actualStartTime, actualEndTime);
-        double result = feeCalculator.calculateCost(fitResult);
-        assertTrue(fitResult.isFit());
-        assertEquals(ruleXMinutesFee + ruleYMinutesFee, result);
-    }
-
-    @Test
-    public void shouldReturnFirstXMinutesFeeAndSubsequenceYMinutesFeeIfActualTimeRangeExceedsXMinutes() {
-        LocalTime actualStartTime = LocalTime.of(10, 0);
-        LocalTime actualEndTime = LocalTime.of(13, 7);
-        FitResult fitResult = feeCalculator.isFit(actualStartTime, actualEndTime);
-        double result = feeCalculator.calculateCost(fitResult);
-        assertTrue(fitResult.isFit());
-        assertEquals(ruleXMinutesFee + ruleYMinutesFee * 5, result);
-    }
-
-    @Test
-    public void shouldReturnFirstXMinutesFeeAndSubsequenceYMinutesFeeIfActualTimeRangeExactlyMatchsRuleTimeRange() {
-        LocalTime actualStartTime = LocalTime.of(10, 0);
-        LocalTime actualEndTime = LocalTime.of(16, 0);
-        FitResult fitResult = feeCalculator.isFit(actualStartTime, actualEndTime);
-        double result = feeCalculator.calculateCost(fitResult);
-        assertTrue(fitResult.isFit());
-        assertEquals(ruleXMinutesFee + ruleYMinutesFee * 16, result);
-    }
+    // task #1
+    // TODO: implement the test cases for the calculateCost method
 }
