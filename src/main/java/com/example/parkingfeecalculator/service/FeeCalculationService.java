@@ -8,6 +8,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.parkingfeecalculator.model.CalculateDaysResult;
 import com.example.parkingfeecalculator.model.CarPark;
 import com.example.parkingfeecalculator.model.FitResult;
@@ -15,6 +17,7 @@ import com.example.parkingfeecalculator.model.VehicleType;
 import com.example.parkingfeecalculator.model.feerulecalculator.RuleCalculatorBase;
 import com.example.parkingfeecalculator.utility.DoubleUtility;
 
+@Service
 public class FeeCalculationService implements IFeeCalculationService {
 
     public boolean checkIsWeekend(LocalDateTime date) {
