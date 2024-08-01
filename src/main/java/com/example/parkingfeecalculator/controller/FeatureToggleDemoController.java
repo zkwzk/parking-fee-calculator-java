@@ -25,7 +25,7 @@ public class FeatureToggleDemoController {
                 return ResponseEntity.ok().body("Hello, World!");
             }
 
-            return ResponseEntity.ok().body("Feature is disabled");
+            return ResponseEntity.status(403).body("Feature is disabled");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error occurred while checking feature toggle");
         }
