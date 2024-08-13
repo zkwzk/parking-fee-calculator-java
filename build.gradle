@@ -52,3 +52,27 @@ jacocoTestReport {
         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
 }
+
+sourceSets {
+    apiTest {
+        java {
+            srcDir 'src/apitest/java'
+        }
+        compileClasspath += sourceSets.main.output + sourceSets.test.output
+        runtimeClasspath += sourceSets.main.output + sourceSets.test.output
+    }
+}
+
+configurations {
+    apiTestImplementation.extendsFrom testImplementation
+    apiTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+task apiTest(type: Test) {
+    useJUnitPlatform()
+    testClassesDirs = sourceSets.apiTest.output.classesDirs
+    classpath = sourceSets.apiTest.runtimeClasspath
+    shouldRunAfter test
+}
+
+check.dependsOn apiTest
