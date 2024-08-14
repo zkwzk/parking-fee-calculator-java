@@ -16,31 +16,25 @@ trap cleanup SIGINT SIGTERM
 
 # gradlew build
 echo "Building the application..."
-./gradlew build
+## TODO-1 write command to build the application
+
 echo "Application built successfully."
 echo "Running the tests..."
-./gradlew test
+## TODO-2 write command to run the unit tests
+
 echo "Tests passed successfully."
 echo "Running the jacoco test coverage report..."
-./gradlew jacocoTestReport
+## TODO-3 write command to generate the jacoco test coverage report
 
-# Extract the missed and covered instruction counts from the JaCoCo XML report
-MISSED=$(sed -n 's/.*<counter type="INSTRUCTION" missed="\([0-9]*\)".*/\1/p' build/reports/jacoco/test/jacocoTestReport.xml | awk '{s+=$1} END {print s}')
-COVERED=$(sed -n 's/.*<counter type="INSTRUCTION" missed="[0-9]*" covered="\([0-9]*\)".*/\1/p' build/reports/jacoco/test/jacocoTestReport.xml | awk '{s+=$1} END {print s}')
+# Extract the missed and covered instruction counts from the jacoco XML report
 
-# Calculate the total instructions and the coverage percentage
-TOTAL=$((MISSED + COVERED))
-COVERAGE=$(echo "scale=2; 100 * $COVERED / $TOTAL" | bc)
+## TODO-4 write command to extract the missed and covered instruction counts from the jacoco XML report
 
-# Check if the coverage is above 90%
-if (( $(echo "$COVERAGE < 90" | bc -l) )); then
-  echo "Test coverage is below 90%: $COVERAGE%"
-  exit 1
-else
-  echo "Test coverage is above 90%: $COVERAGE%"
-fi
 
 echo "Test coverage report generated successfully."
+# TODO-5 Check if the coverage is above 90%, if not fail the build, print the coverage and exit the script
+
+
 # Run the application
 
 echo "Running the application..."
@@ -53,10 +47,11 @@ sleep 5
 
 # Open the browser to localhost:8080
 echo "Opening the browser..."
+
 open http://localhost:8080/swagger-ui/index.html
 
 echo "Running the API tests..."
-./gradlew apiTest &
 
+# TODO-6 Run api tests in parallel
 # Wait for the bootRun process to finish
 wait $BOOTRUN_PID
