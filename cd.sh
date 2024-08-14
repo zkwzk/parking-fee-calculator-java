@@ -55,6 +55,8 @@ sleep 5
 echo "Opening the browser..."
 open http://localhost:8080/swagger-ui/index.html
 
+echo "Running the API tests..."
+./gradlew apiTest &
 
 # Wait for the bootRun process to finish
 wait $BOOTRUN_PID
