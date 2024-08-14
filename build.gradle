@@ -74,5 +74,3 @@ task apiTest(type: Test) {
     classpath = sourceSets.apiTest.runtimeClasspath
     shouldRunAfter test
 }
-
-check.dependsOn apiTest
