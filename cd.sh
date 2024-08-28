@@ -14,11 +14,11 @@ cleanup() {
 # Trap script termination signals (e.g., Ctrl+C)
 trap cleanup SIGINT SIGTERM
 
-# check the credentials with talisman
-./talisman --pattern="./**/*.java"
+# task 1: check the credentials with talisman
 
-# analyze the code dependencies
-./gradlew dependencyCheckAnalyze --info
+
+# task 2: analyze the code dependencies
+
 
 # gradlew build
 echo "Building the application..."
@@ -49,8 +49,8 @@ fi
 echo "Test coverage report generated successfully."
 # Run the application
 
-# run the spotbugs SAST
-./gradlew spotbugsMain
+# task 3: run the spotbugs SAST
+
 echo "Running the application..."
 ./gradlew bootRun &
 BOOTRUN_PID=$!
