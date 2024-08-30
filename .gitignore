@@ -60,3 +60,6 @@ out/
 
 ### VS Code ###
 .vscode/
+report.json
+talisman
+count.txt
