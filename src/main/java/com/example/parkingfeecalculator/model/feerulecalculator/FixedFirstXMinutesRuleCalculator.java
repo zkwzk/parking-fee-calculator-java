@@ -3,6 +3,9 @@ package com.example.parkingfeecalculator.model.feerulecalculator;
 import java.time.Duration;
 import java.time.LocalTime;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.example.parkingfeecalculator.model.FitResult;
 import com.example.parkingfeecalculator.utility.DoubleUtility;
 
@@ -14,6 +17,7 @@ public class FixedFirstXMinutesRuleCalculator extends RuleCalculatorBase {
     private double firstXMinutesFee;
     private int yMinutes;
     private double subsequentYMinutesFee; 
+    final static Logger logger = LogManager.getLogger(FixedFirstXMinutesRuleCalculator.class);
 
     public FixedFirstXMinutesRuleCalculator(LocalTime startTime, LocalTime endTime, int xMinutes, double firstXMinutesFee, int yMinutes, double subsequentYMinutesFee) {
         super(startTime, endTime);
@@ -35,7 +39,7 @@ public class FixedFirstXMinutesRuleCalculator extends RuleCalculatorBase {
             return firstXMinutesFee;
         }
         
-        totalCost = firstXMinutesFee + Math.ceil((totalMinutes - xMinutes) / (double)yMinutes) * subsequentYMinutesFee;
+        totalCost = firstXMinutesFee + (totalMinutes - xMinutes) / (double)yMinutes * subsequentYMinutesFee;
 
         return DoubleUtility.roundToTwoDecimalPlaces(totalCost);
     }

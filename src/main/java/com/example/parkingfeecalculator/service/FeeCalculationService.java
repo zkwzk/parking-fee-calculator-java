@@ -8,6 +8,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.example.parkingfeecalculator.model.CalculateDaysResult;
@@ -19,7 +21,7 @@ import com.example.parkingfeecalculator.utility.DoubleUtility;
 
 @Service
 public class FeeCalculationService implements IFeeCalculationService {
-
+    final static Logger logger = LogManager.getLogger(FeeCalculationService.class);
     public boolean checkIsWeekend(LocalDateTime date) {
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         return dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY;

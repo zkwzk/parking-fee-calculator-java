@@ -2,12 +2,16 @@ package com.example.parkingfeecalculator.model.feerulecalculator;
 
 import java.time.LocalTime;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.example.parkingfeecalculator.model.FitResult;
 import com.example.parkingfeecalculator.utility.DoubleUtility;
 
 public class FixedFeePerXMinutesRuleCalculator extends RuleCalculatorBase {
     private final double xMinutesFee;
     private final int xMinutes;
+    final static Logger logger = LogManager.getLogger(FixedFeePerXMinutesRuleCalculator.class);
 
     public FixedFeePerXMinutesRuleCalculator(LocalTime startTime, LocalTime endTime, int xMinutes, double xMinutesFee) {
         super(startTime, endTime);

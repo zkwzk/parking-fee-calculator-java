@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 @RestController
 @RequestMapping("/api/feecalculator")
 public class FeeCalculationController {
+    final static Logger logger = LogManager.getLogger(FeeCalculationController.class);
     @Autowired
     private FeeCalculationService service;
     
@@ -31,6 +34,8 @@ public class FeeCalculationController {
         @Parameter(description = "Start time in ISO format", example = "2024-03-20T10:00:00") @RequestParam(value="startTime",required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime, 
         @Parameter(description = "End time in ISO format", example = "2024-03-22T12:00:00") @RequestParam(value="endTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endTime, 
         @Parameter(description = "Vehicle Type, Car or Motorcycle", example = "Car") @RequestParam(value="vehicleType", required = true) String vehicleType) {
+        logger.info("getLowestCarpark called");
+
         List<CarParkFee> carParkFees = new ArrayList<CarParkFee>();
         if(vehicleType.toLowerCase().equals("car")) {
             for (CarPark carPark : CarParkConfig.CarParks) {
