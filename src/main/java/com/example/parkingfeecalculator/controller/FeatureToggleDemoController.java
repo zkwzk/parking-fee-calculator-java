@@ -18,9 +18,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class FeatureToggleDemoController {
     // change toggle online: https://www.npoint.io/docs/0752974a4a6668c526af
     private final String toggleUrl = "https://api.npoint.io/0752974a4a6668c526af";
-    // step 3: fill in your toggle url here, e.g. "https://api.npoint.io/0752974a4a6668c526af";
+    // step 2: fill in your toggle url here, e.g. "https://api.npoint.io/0752974a4a6668c526af";
     private final String testToggleUrl = "";
-    // step 3: fill in your toggle name here, e.g. "toggle";
+    // step 2: fill in your toggle name here, e.g. "toggle";
     private final String testToggleName = "";
     @GetMapping("/hello")
     public ResponseEntity<?> hello() {
@@ -39,11 +39,11 @@ public class FeatureToggleDemoController {
     public ResponseEntity<?> testToggle() {
         try {
             if(isFeatureEnabled(testToggleUrl, testToggleName)) {
-                // step 4: when toggle on
+                // step 3: when toggle on
                 return ResponseEntity.ok().body("Hello, World!");
             }
 
-            // step 4: when toggle off
+            // step 3: when toggle off
             return ResponseEntity.status(403).body("Feature is disabled");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error occurred while checking feature toggle");

@@ -9,3 +9,13 @@ This is the branch to demo the feature toggle, it will change the behavior of th
 3. now go to the https://www.npoint.io/docs/0752974a4a6668c526af and change the toggle to `true`, and trigger the endpiont again, it will return 200 with `Hello World!`
 
 
+
+## Build Feature Toggle Practise Steps
+
+1. Create a new json at https://www.npoint.io/, click the Share button to copy the url
+2. Open `FeatureToggleDemoController.java`, replace the json url in code(`String testToggleUrl`) with you created in step 1
+3. Implement the `testToggle` method when toggle on and toggle off with whatever you want
+4. Run `./gradlew bootRun`
+5. Go to swagger and click try it out
+6. Change the feature toggle value and try it again
+
