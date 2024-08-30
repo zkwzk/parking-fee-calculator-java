@@ -31,6 +31,7 @@ public class getLowestCarparkTest {
         assertEquals(200, response.statusCode());
         CarParkFee carParkFee = new ObjectMapper().readValue(response.body(), CarParkFee.class);
         assertEquals("Plaza Singapura Car Park", carParkFee.getName());
+        assertEquals(89.35, carParkFee.getFee());
     }
 
     @Test
