@@ -34,7 +34,7 @@ public class FeeCalculationController {
         @Parameter(description = "Start time in ISO format", example = "2024-03-20T10:00:00") @RequestParam(value="startTime",required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startTime, 
         @Parameter(description = "End time in ISO format", example = "2024-03-22T12:00:00") @RequestParam(value="endTime", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endTime, 
         @Parameter(description = "Vehicle Type, Car or Motorcycle", example = "Car") @RequestParam(value="vehicleType", required = true) String vehicleType) {
-        logger.info("getLowestCarpark called");
+        logger.debug("getLowestCarpark called");
 
         List<CarParkFee> carParkFees = new ArrayList<CarParkFee>();
         if(vehicleType.toLowerCase().equals("car")) {
